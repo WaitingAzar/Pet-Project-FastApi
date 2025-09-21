@@ -7,3 +7,5 @@ __pycache__/
 
 # Файли IDE
 .vscode/
+
+config.py

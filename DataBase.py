@@ -1,17 +1,14 @@
-from azure.cosmos import CosmosClient
-from .config import COSMOS_ENDPOINT, COSMOS_KEY, DATABASE_NAME, CONTAINER_NAME
+from azure.cosmos import CosmosClient, PartitionKey
+from config import COSMOS_ENDPOINT, COSMOS_KEY, DATABASE_NAME, CONTAINER_NAME
 
-def get_cosmos_client(endpoint: str, key: str) -> CosmosClient:
-    return CosmosClient(endpoint, key, connection_verify=False)
+client = CosmosClient(COSMOS_ENDPOINT, COSMOS_KEY)
 
-# Створюємо клієнта
-client = get_cosmos_client(COSMOS_ENDPOINT, COSMOS_KEY)
-
-# Створюємо базу даних, якщо не існує
+# База даних
 database = client.create_database_if_not_exists(id=DATABASE_NAME)
 
-# Створюємо контейнер, якщо не існує
+# Контейнер з правильним partition key
 container = database.create_container_if_not_exists(
     id=CONTAINER_NAME,
-    partition_key="/id"
+    partition_key=PartitionKey(path="/taskId"),  # partition key окремо від id
+    offer_throughput=400
 )

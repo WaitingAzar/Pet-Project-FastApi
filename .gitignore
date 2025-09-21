@@ -1,0 +1,9 @@
+# Віртуальне середовище
+venv/
+
+# Файли Python
+__pycache__/
+*.pyc
+
+# Файли IDE
+.vscode/

@@ -9,6 +9,6 @@ database = client.create_database_if_not_exists(id=DATABASE_NAME)
 # Контейнер з правильним partition key
 container = database.create_container_if_not_exists(
     id=CONTAINER_NAME,
-    partition_key=PartitionKey(path="/taskId"),  # partition key окремо від id
+    partition_key=PartitionKey(path='/id'),  # partition key окремо від id
     offer_throughput=400
 )

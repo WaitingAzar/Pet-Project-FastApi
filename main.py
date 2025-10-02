@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from routers import post_task, get_task, delete_task
+from routers import post_task, get_task, 
 
 app = FastAPI(title="Tasks API")
 

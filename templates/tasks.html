@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Завдання</title>
+</head>
+<body>
+  <h1>Список завдань</h1>
+  <ul>
+    {% for task in tasks %}
+      <li>{{ task["title"] }} ({{ task["category"] }})</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
